@@ -180,8 +180,8 @@
             display: flex;
             align-items: center;
             padding-top: 80px;
-            background: linear-gradient(to bottom, rgba(26,26,26,0.6) 0%, rgba(26,26,26,1) 100%),
-                        url('public/images/image copy.png') center center / cover no-repeat;
+            background: linear-gradient(to bottom, rgba(26, 26, 26, 0.6) 0%, rgba(26, 26, 26, 1) 100%),
+                url('/images/image copy.png') center center / cover no-repeat;
         }
 
         .hero-content {
@@ -726,7 +726,8 @@
     <nav id="navbar">
         <div class="container nav-content">
             <a href="#" class="logo" style="display: flex; align-items: center; gap: 12px;">
-                <img src="public/images/image_transparent_final.png" alt="Tonino's Logo" style="height: 80px; width: auto; object-fit: contain; filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.9));">
+                <img src="/images/image_transparent_final.png" alt="Tonino's Logo"
+                    style="height: 80px; width: auto; object-fit: contain; filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.9));">
                 <div>TONINO'S<span>.</span></div>
             </a>
             <div class="nav-links">
@@ -792,15 +793,15 @@
                 style="text-align: center; justify-content: center; flex-direction: column; align-items: center;">
                 <h2>Selección <span>Premium</span></h2>
                 <p>Nuestras pizzas más solicitadas, elaboradas con ingredientes artesanales de primera calidad.</p>
-                <a href="#" class="view-all" style="margin-top: 15px;" onclick="toggleFullMenu(event)">Ver menú completo <i
-                        class="fa-solid fa-arrow-right"></i></a>
+                <a href="#" class="view-all" style="margin-top: 15px;" onclick="toggleFullMenu(event)">Ver menú completo
+                    <i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
             <div class="menu-carousel">
                 <!-- Product 1 -->
                 <div class="product-card">
                     <span class="product-badge"><i class="fa-solid fa-star"></i> Favorita</span>
-                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (4).jpeg" alt="Pizza La Juanga"
+                    <img src="/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (4).jpeg" alt="Pizza La Juanga"
                         class="product-img">
                     <div class="product-content">
                         <div class="product-header">
@@ -825,8 +826,8 @@
 
                 <!-- Product 2 -->
                 <div class="product-card">
-                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (3).jpeg"
-                        alt="Pizza Especial Doritos" class="product-img">
+                    <img src="/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (3).jpeg" alt="Pizza Especial Doritos"
+                        class="product-img">
                     <div class="product-content">
                         <div class="product-header">
                             <h3 class="product-title">Tradicional XL</h3>
@@ -850,7 +851,7 @@
 
                 <!-- Product 3 -->
                 <div class="product-card">
-                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (1).jpeg" alt="Pizza Cuatro Quesos"
+                    <img src="/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (1).jpeg" alt="Pizza Cuatro Quesos"
                         class="product-img">
                     <div class="product-content">
                         <div class="product-header">
@@ -875,7 +876,7 @@
 
                 <!-- Product 4 -->
                 <div class="product-card">
-                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (2).jpeg" alt="Pizza Premium"
+                    <img src="/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (2).jpeg" alt="Pizza Premium"
                         class="product-img">
                     <div class="product-content">
                         <div class="product-header">
@@ -902,9 +903,9 @@
             <div id="fullMenuContainer" style="display: none; margin-top: 40px;">
                 <div
                     style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; max-width: 1000px; margin: 0 auto;">
-                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.40.14 AM (1).jpeg" alt="Menú 1"
+                    <img src="/images/WhatsApp Image 2026-05-19 at 11.40.14 AM (1).jpeg" alt="Menú 1"
                         style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
-                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.40.14 AM.jpeg" alt="Menú 2"
+                    <img src="/images/WhatsApp Image 2026-05-19 at 11.40.14 AM.jpeg" alt="Menú 2"
                         style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
                 </div>
             </div>
@@ -923,7 +924,7 @@
             <div class="menu-carousel">
                 <!-- Promo 1 -->
                 <div class="product-card">
-                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (3).jpeg" alt="Combo Familiar"
+                    <img src="/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (3).jpeg" alt="Combo Familiar"
                         class="product-img">
                     <div class="product-content">
                         <span class="promo-label" style="display:block; margin-bottom: 5px;">Para Compartir</span>
@@ -939,7 +940,7 @@
 
                 <!-- Promo 2 -->
                 <div class="product-card">
-                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.17 AM (1).jpeg" alt="Combo Dúo"
+                    <img src="/images/WhatsApp Image 2026-05-19 at 11.24.17 AM (1).jpeg" alt="Combo Dúo"
                         class="product-img">
                     <div class="product-content">
                         <span class="promo-label" style="display:block; margin-bottom: 5px;">Promo del Día</span>
@@ -955,7 +956,7 @@
 
                 <!-- Promo 3 -->
                 <div class="product-card">
-                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.17 AM.jpeg" alt="Fiesta Tonino's"
+                    <img src="/images/WhatsApp Image 2026-05-19 at 11.24.17 AM.jpeg" alt="Fiesta Tonino's"
                         class="product-img">
                     <div class="product-content">
                         <span class="promo-label" style="display:block; margin-bottom: 5px;">Fin de Semana</span>
@@ -971,7 +972,7 @@
 
                 <!-- Promo 4 -->
                 <div class="product-card">
-                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.15 AM.jpeg" alt="Maxi Pizza"
+                    <img src="/images/WhatsApp Image 2026-05-19 at 11.24.15 AM.jpeg" alt="Maxi Pizza"
                         class="product-img">
                     <div class="product-content">
                         <span class="promo-label" style="display:block; margin-bottom: 5px;">Mega Ahorro</span>
@@ -1030,7 +1031,8 @@
     <footer>
         <div class="container">
             <div class="footer-logo" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
-                <img src="public/images/image_transparent_final.png" alt="Tonino's Logo" style="height: 125px; width: auto; object-fit: contain; filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.9));">
+                <img src="/images/image_transparent_final.png" alt="Tonino's Logo"
+                    style="height: 125px; width: auto; object-fit: contain; filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.9));">
                 <div>TONINO'S</div>
             </div>
             <div class="footer-links">
