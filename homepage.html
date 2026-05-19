@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tonino's Pizza | El Verdadero Sabor</title>
+    <meta name="description"
+        content="Pizzería premium con ingredientes artesanales. Pide ahora con delivery o paga en cuotas con Cashea.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&family=Sora:wght@400;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #C62828;
+            /* Rojo Tonino's */
+            --primary-hover: #b02323;
+            --accent: #FFC107;
+            /* Amarillo Cromo */
+            --bg-main: #1A1A1A;
+            /* Negro Carbón */
+            --bg-secondary: #222222;
+            /* Darker gray for cards */
+            --text-light: #F5F5F0;
+            /* Crema Suave */
+            --text-muted: #A0A0A0;
+
+            --font-head: 'Sora', sans-serif;
+            --font-body: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-head);
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 100;
+            transition: all 0.3s ease;
+            background: linear-gradient(to bottom, rgba(26, 26, 26, 0.9) 0%, rgba(26, 26, 26, 0) 100%);
+        }
+
+        nav.scrolled {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-light);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .cart-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .cart-btn i {
+            color: var(--accent);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 4px;
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(198, 40, 40, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(198, 40, 40, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--text-light);
+            color: var(--text-light);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(to bottom, rgba(26,26,26,0.6) 0%, rgba(26,26,26,1) 100%),
+                        url('public/images/image copy.png') center center / cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cashea-badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 5vw, 5rem);
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero h1 span {
+            color: var(--text-light);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #d0d0d0;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Trust Bar */
+        .trust-bar {
+            padding: 40px 0;
+            background-color: var(--bg-main);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .trust-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        .trust-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .trust-item p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 100px 0;
+            background-color: var(--bg-main);
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header h2 span {
+            color: var(--text-light);
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            max-width: 500px;
+        }
+
+        .view-all {
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.3s ease;
+        }
+
+        .view-all:hover {
+            color: var(--accent);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-carousel {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            gap: 30px;
+            padding-bottom: 20px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .menu-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .menu-carousel::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+        }
+
+        .menu-carousel::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+
+        .menu-carousel>.product-card {
+            flex: 0 0 calc(33.333% - 20px);
+            scroll-snap-align: start;
+            min-width: 300px;
+        }
+
+        .product-card {
+            background-color: var(--bg-secondary);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--accent);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: var(--accent);
+            color: var(--bg-main);
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-content {
+            padding: 25px;
+        }
+
+        .product-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+
+        .stars {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .product-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+        }
+
+        .price-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-full {
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+
+        .price-cashea {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .add-to-cart {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--primary-hover);
+            transform: scale(1.1);
+        }
+
+        /* Promos Section */
+        .promos-section {
+            padding: 80px 0;
+            background: linear-gradient(180deg, var(--bg-main) 0%, rgba(198, 40, 40, 0.05) 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .promo-banner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            background-color: var(--bg-secondary);
+            margin-bottom: 30px;
+        }
+
+        .promo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 300px;
+        }
+
+        .promo-content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .promo-label {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .promo-title {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .promo-desc {
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .promo-price-box {
+            margin-bottom: 30px;
+        }
+
+        .promo-price {
+            font-size: 2rem;
+            font-family: var(--font-head);
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .promo-cashea {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: linear-gradient(to right, var(--bg-main) 50%, rgba(198, 40, 40, 0.05) 100%);
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            height: 400px;
+            background-color: #2a2a2a;
+            position: relative;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            pointer-events: none;
+        }
+
+        .map-overlay i {
+            font-size: 3rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+        }
+
+        .contact-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-content h2 span {
+            font-style: italic;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .contact-content p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-light);
+            font-family: var(--font-head);
+            font-weight: 600;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .whatsapp-link i {
+            font-size: 1.6rem;
+            color: #25D366;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-link:hover {
+            color: #25D366;
+        }
+
+        .whatsapp-link:hover i {
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            padding: 60px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: var(--font-head);
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-light);
+        }
+
+        .copyright {
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promo-banner {
+                grid-template-columns: 1fr;
+            }
+
+            .promo-img {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* Micro Animations */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .cashea-badge {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo" style="display: flex; align-items: center; gap: 12px;">
+                <img src="public/images/image_transparent_final.png" alt="Tonino's Logo" style="height: 80px; width: auto; object-fit: contain; filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.9));">
+                <div>TONINO'S<span>.</span></div>
+            </a>
+            <div class="nav-links">
+                <a href="#menu" onclick="openFullMenuFromNav(event)">Menú</a>
+                <a href="#promos">Nosotros</a>
+                <a href="#cashea">Cashea</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+            <a href="#" class="cart-btn">
+                <span>Carrito</span>
+                <i class="fa-solid fa-basket-shopping"></i>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="cashea-badge">
+                <i class="fa-solid fa-tag"></i> Paga en 0 cuotas sin interés con Cashea
+            </div>
+            <h1>El verdadero <span>sabor</span><br>que estabas buscando.</h1>
+            <p>Ingredientes artesanales, masa madre de fermentación lenta y horneado a la perfección. Directo a tu
+                puerta.</p>
+            <div class="hero-cta">
+                <a href="#contacto" class="btn btn-primary">Ordenar Ahora</a>
+                <a href="#promos" class="btn btn-outline">Ver Promos del Día</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Bar -->
+    <section class="trust-bar">
+        <div class="container trust-grid">
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-regular fa-clock"></i></div>
+                <div>
+                    <h4>Horario</h4>
+                    <p>12:00 PM - 11:00 PM<br>Todos los días</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-motorcycle"></i></div>
+                <div>
+                    <h4>Delivery</h4>
+                    <p>Zonas céntricas<br>Menos de 35 mins</p>
+                </div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-icon"><i class="fa-solid fa-wallet"></i></div>
+                <div>
+                    <h4>Cashea</h4>
+                    <p>Disfruta hoy,<br>paga después sin interés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <div class="section-header"
+                style="text-align: center; justify-content: center; flex-direction: column; align-items: center;">
+                <h2>Selección <span>Premium</span></h2>
+                <p>Nuestras pizzas más solicitadas, elaboradas con ingredientes artesanales de primera calidad.</p>
+                <a href="#" class="view-all" style="margin-top: 15px;" onclick="toggleFullMenu(event)">Ver menú completo <i
+                        class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="menu-carousel">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <span class="product-badge"><i class="fa-solid fa-star"></i> Favorita</span>
+                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (4).jpeg" alt="Pizza La Juanga"
+                        class="product-img">
+                    <div class="product-content">
+                        <div class="product-header">
+                            <h3 class="product-title">Dorangel</h3>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="product-desc">Jugosos trozos de carne y pollo seleccionados a la parrilla, bañados en
+                            nuestra salsa secreta sobre una cama de mozzarella derretida.</p>
+                        <div class="product-footer">
+                            <div class="price-box">
+                                <span class="price-full">PRECIO: $31.00</span>
+                                <span class="price-cashea">4 cuotas de $7.75 <small
+                                        style="color:var(--text-muted);font-weight:400">con Cashea</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (3).jpeg"
+                        alt="Pizza Especial Doritos" class="product-img">
+                    <div class="product-content">
+                        <div class="product-header">
+                            <h3 class="product-title">Tradicional XL</h3>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star-half-stroke"></i>
+                            </div>
+                        </div>
+                        <p class="product-desc">Una explosión de texturas. Nuestra base clásica coronada con el toque
+                            crujiente e inconfundible de Doritos.</p>
+                        <div class="product-footer">
+                            <div class="price-box">
+                                <span class="price-full">PRECIO: $28.00</span>
+                                <span class="price-cashea">4 cuotas de $7.00 <small
+                                        style="color:var(--text-muted);font-weight:400">con Cashea</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (1).jpeg" alt="Pizza Cuatro Quesos"
+                        class="product-img">
+                    <div class="product-content">
+                        <div class="product-header">
+                            <h3 class="product-title">Cuatro Quesos</h3>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="product-desc">Deliciosa combinación de quesos madurados sobre nuestra salsa especial.
+                            Un clásico imperdible para los amantes del buen queso.</p>
+                        <div class="product-footer">
+                            <div class="price-box">
+                                <span class="price-full">PRECIO: $25.00</span>
+                                <span class="price-cashea">4 cuotas de $6.25 <small
+                                        style="color:var(--text-muted);font-weight:400">con Cashea</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (2).jpeg" alt="Pizza Premium"
+                        class="product-img">
+                    <div class="product-content">
+                        <div class="product-header">
+                            <h3 class="product-title">Tonino's Clásica</h3>
+                            <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                    class="fa-solid fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="product-desc">Toques de albahaca fresca, pepperoni premium y vegetales. El auténtico
+                            sabor de Italia directo en tu mesa y listo para disfrutar.</p>
+                        <div class="product-footer">
+                            <div class="price-box">
+                                <span class="price-full">PRECIO: $26.00</span>
+                                <span class="price-cashea">4 cuotas de $6.50 <small
+                                        style="color:var(--text-muted);font-weight:400">con Cashea</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="fullMenuContainer" style="display: none; margin-top: 40px;">
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; width: 100%; max-width: 1000px; margin: 0 auto;">
+                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.40.14 AM (1).jpeg" alt="Menú 1"
+                        style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.40.14 AM.jpeg" alt="Menú 2"
+                        style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promos Section -->
+    <section id="promos" class="promos-section">
+        <div class="container">
+            <div class="section-header"
+                style="text-align: center; justify-content: center; flex-direction: column; align-items: center;">
+                <h2>Promociones <span>Exclusivas</span></h2>
+                <p>Aprovecha nuestras ofertas por tiempo limitado.</p>
+            </div>
+
+            <div class="menu-carousel">
+                <!-- Promo 1 -->
+                <div class="product-card">
+                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.16 AM (3).jpeg" alt="Combo Familiar"
+                        class="product-img">
+                    <div class="product-content">
+                        <span class="promo-label" style="display:block; margin-bottom: 5px;">Para Compartir</span>
+                        <h3 class="product-title">Combo Familiar</h3>
+                        <p class="product-desc">2 Pizzas Grandes + Refresco de 2L. Ideal para compartir en familia con
+                            el mejor sabor.</p>
+                        <div class="promo-price-box">
+                            <div class="promo-price">$25.00</div>
+                            <div class="promo-cashea">4 cuotas de $6.25 con Cashea</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promo 2 -->
+                <div class="product-card">
+                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.17 AM (1).jpeg" alt="Combo Dúo"
+                        class="product-img">
+                    <div class="product-content">
+                        <span class="promo-label" style="display:block; margin-bottom: 5px;">Promo del Día</span>
+                        <h3 class="product-title">Combo Dúo</h3>
+                        <p class="product-desc">1 Pizza Mediana de cualquier ingrediente + 2 bebidas para disfrutar en
+                            pareja.</p>
+                        <div class="promo-price-box">
+                            <div class="promo-price">$15.00</div>
+                            <div class="promo-cashea">4 cuotas de $3.75 con Cashea</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promo 3 -->
+                <div class="product-card">
+                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.17 AM.jpeg" alt="Fiesta Tonino's"
+                        class="product-img">
+                    <div class="product-content">
+                        <span class="promo-label" style="display:block; margin-bottom: 5px;">Fin de Semana</span>
+                        <h3 class="product-title">Fiesta Tonino's</h3>
+                        <p class="product-desc">3 Pizzas Medianas clásicas para armar la fiesta perfecta sin salir de
+                            casa.</p>
+                        <div class="promo-price-box">
+                            <div class="promo-price">$30.00</div>
+                            <div class="promo-cashea">4 cuotas de $7.50 con Cashea</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promo 4 -->
+                <div class="product-card">
+                    <img src="public/images/WhatsApp Image 2026-05-19 at 11.24.15 AM.jpeg" alt="Maxi Pizza"
+                        class="product-img">
+                    <div class="product-content">
+                        <span class="promo-label" style="display:block; margin-bottom: 5px;">Mega Ahorro</span>
+                        <h3 class="product-title">Maxi Pizza</h3>
+                        <p class="product-desc">Nuestra pizza extra grande de 16 porciones con extra queso y borde
+                            relleno.</p>
+                        <div class="promo-price-box">
+                            <div class="promo-price">$22.00</div>
+                            <div class="promo-cashea">4 cuotas de $5.50 con Cashea</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <button class="btn btn-outline" style="width: auto;">Ver todas las promociones</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+        <div class="container contact-grid">
+            <div class="map-container">
+                <!-- Real Google Maps Embedded (Dark Mode styled via CSS) -->
+                <iframe
+                    src="https://maps.google.com/maps?q=Puerta%20Maraven,%20Punto%20Fijo,%20Falcon&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                    width="100%" height="100%" style="border:0; filter: invert(90%) hue-rotate(180deg) contrast(100%);"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="contact-content">
+                <h2>¿Listo para <span>ordenar?</span></h2>
+                <p>Nuestro equipo está listo para preparar tu orden. Contáctanos directamente por WhatsApp para una
+                    atención rápida y personalizada.</p>
+                <div style="display: flex; flex-direction: column; gap: 20px; align-items: flex-start;">
+                    <a href="https://wa.me/584222121555?text=Hola%20Tonino's%20Pizza!%20%F0%9F%8D%95%20Me%20gustar%C3%ADa%20hacer%20un%20pedido."
+                        target="_blank" class="whatsapp-link">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Puerta Maraven: 0422-2121555
+                    </a>
+                    <a href="https://wa.me/584223131888?text=Hola%20Tonino's%20Pizza!%20%F0%9F%8D%95%20Me%20gustar%C3%ADa%20hacer%20un%20pedido."
+                        target="_blank" class="whatsapp-link">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Santa Irene: 0422-3131888
+                    </a>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px;">
+                    <i class="fa-solid fa-shield-halved" style="color:var(--text-muted);"></i>
+                    Atención inmediata durante horario laboral
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo" style="display: flex; flex-direction: column; align-items: center; gap: 15px;">
+                <img src="public/images/image_transparent_final.png" alt="Tonino's Logo" style="height: 125px; width: auto; object-fit: contain; filter: drop-shadow(0px 0px 2px rgba(255, 255, 255, 0.9));">
+                <div>TONINO'S</div>
+            </div>
+            <div class="footer-links">
+                <a href="#menu" onclick="openFullMenuFromNav(event)">Menú</a>
+                <a href="#">Ubicaciones</a>
+                <a href="#">Cashea Info</a>
+                <a href="#">Contacto</a>
+            </div>
+            <p class="copyright">&copy; 2026 Tonino's Pizza. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle Full Menu
+        function toggleFullMenu(e) {
+            if (e) e.preventDefault();
+            const container = document.getElementById('fullMenuContainer');
+            const toggleBtn = document.querySelector('.view-all');
+
+            if (container.style.display === 'none') {
+                container.style.display = 'block';
+                if (toggleBtn) toggleBtn.innerHTML = 'Ocultar menú <i class="fa-solid fa-arrow-up"></i>';
+            } else {
+                container.style.display = 'none';
+                if (toggleBtn) toggleBtn.innerHTML = 'Ver menú completo <i class="fa-solid fa-arrow-right"></i>';
+            }
+        }
+
+        function openFullMenuFromNav(e) {
+            if (e) e.preventDefault();
+            const container = document.getElementById('fullMenuContainer');
+            if (container.style.display === 'none') {
+                toggleFullMenu();
+            }
+            document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
