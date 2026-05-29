@@ -1,6 +1,8 @@
 import { prisma } from '@/lib/prisma';
 import HomeClient from '@/components/HomeClient';
 
+export const dynamic = 'force-dynamic';
+
 async function getData() {
   const [products, promotions, locations, settings] = await Promise.all([
     prisma.product.findMany({
